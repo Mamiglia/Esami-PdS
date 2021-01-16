@@ -8,7 +8,7 @@ public class Main {
         ServerSocket ss = new ServerSocket(4400);
         while (true) {
             Socket cs = ss.accept();
-            Thread t = new Thread(new ClientSender(cs));
+            Thread t = new Thread(new ClientHandler(cs));
             t.start();
         }
 

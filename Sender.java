@@ -1,17 +1,13 @@
-import sun.security.util.ArrayUtil;
-
 import java.io.PrintWriter;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 
 class Sender  implements Runnable {
+    // si occupa solamente di inviare al client le coppie di numeri
     private final ArrayList<Integer> indexList = new ArrayList<>();
     private final PrintWriter output;
     public boolean interrupted = false;
 
-    public Sender(PrintWriter output, ClientSender cs) {
+    public Sender(PrintWriter output, ClientHandler cs) {
         this.output = output;
         for (int i=0;i<5;i++) {
             indexList.add(i);
@@ -27,6 +23,7 @@ class Sender  implements Runnable {
             output.flush();
             System.out.println("Sent: " + indexList.get(randomIndex) + ";" + randomDigit);
             indexList.remove(randomIndex);
+            // l'array indexList viene consumato ad ogni iterazione
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {

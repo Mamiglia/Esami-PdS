@@ -3,14 +3,15 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class ClientSender implements Runnable {
+public class ClientHandler implements Runnable {
+    // Gestisce un Client, riceve i suoi comandi
     private final Socket client;
     private final Scanner input;
     private final PrintWriter output;
     public boolean running = true;
     private Sender sender;
 
-    public ClientSender(Socket client) throws IOException {
+    public ClientHandler(Socket client) throws IOException {
         this.client = client;
         input = new Scanner(client.getInputStream());
         output = new PrintWriter(client.getOutputStream());
@@ -21,7 +22,7 @@ public class ClientSender implements Runnable {
     public void run() {
         System.out.println("New Client accepted");
         while (running) {
-            //System.out.println("waiting for input...");
+            System.out.println("waiting for input...");
             getCmd();
         }
         System.out.println("Client dismissed");
@@ -35,7 +36,7 @@ public class ClientSender implements Runnable {
         t.start();
     }
 
-    private void stop() {
+    private void disconnect() {
         running = false;
         try {
             client.close();
@@ -58,7 +59,7 @@ public class ClientSender implements Runnable {
                     start();
                     break;
                 case "disconnect":
-                    stop();
+                    disconnect();
                     break;
                 case "interrompi":
                     interrupt();
