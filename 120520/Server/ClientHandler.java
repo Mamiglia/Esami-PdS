@@ -1,3 +1,5 @@
+package Server;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -21,7 +23,7 @@ public class ClientHandler implements Runnable {
     @Override
     public void run() {
         System.out.println("New Client accepted");
-        while (running) {
+        while (running &&  input.hasNext()) {
             System.out.println("waiting for input...");
             getCmd();
         }
