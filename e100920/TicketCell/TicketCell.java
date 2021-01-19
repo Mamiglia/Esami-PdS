@@ -27,7 +27,7 @@ public class TicketCell extends JLabel {
         if (selected) {
             setBackground(Color.GREEN);
         } else {
-            setBackground(Color.YELLOW);
+            setBackground(Color.WHITE);
         }
     }
 
