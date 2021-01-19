@@ -1,5 +1,7 @@
 package e100920.Client;
 
+import e100920.TicketCell.TicketCell;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -93,5 +95,20 @@ class Act implements ActionListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private int checkCells(int v) {
+        int res = 0;
+
+        for (TicketCell t : frame.getCells()) {
+
+            if (t.getValue() == v) {
+                t.setSelected(true);
+            }
+            if (t.isSelected()) {
+                res += 1;
+            }
+        }
+        return res;
     }
 }

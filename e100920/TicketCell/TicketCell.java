@@ -4,36 +4,31 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class TicketCell extends JPanel {
+public class TicketCell extends JLabel {
     private static ArrayList<Integer> NUMBERS;
-    private JLabel label = new JLabel("50");
 
     //private JLabel label = new JLabel(String.valueOf(getRandomNumber()));
     private boolean selected = false;
 
     public TicketCell() {
-        setLayout(new GridLayout(1,1));
+        super("50");
         setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        add(label);
-        setOpaque(false);
+        setOpaque(true);
     }
 
     public int getValue() {
-       return Integer.parseInt(label.getText());
+       return Integer.parseInt(getText());
     }
 
 
     public void setSelected(boolean selected) {
         this.selected = selected;
-        String s = label.getText();
-        remove(getComponent(0));
-        label = new JLabel("30");
-        if (this.selected) {
-            label.setBackground(Color.GREEN);
+        if (selected) {
+            setBackground(Color.GREEN);
         } else {
-            label.setBackground(Color.YELLOW);
+            setBackground(Color.YELLOW);
         }
-        add(label);
+        System.out.println(getBackground().toString());
     }
 
     public boolean isSelected() {

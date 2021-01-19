@@ -2,15 +2,16 @@ package e100920.Client;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import e100920.TicketCell.TicketCell;
 
 class GUI extends JFrame {
-    private final TicketCell[] cells = new TicketCell[15];
+    private ArrayList<TicketCell> cells;
     private JPanel rootPanel;
-    private JPanel UpperPart;
+    private JPanel upperPart;
     private JTextField ipField;
     private JTextField portField;
     private JButton connectButton;
@@ -21,7 +22,7 @@ class GUI extends JFrame {
     private JButton startButton;
     private JButton stopButton;
     private JPanel centerGrid;
-    private Act act = new Act(this);
+    private final Act act = new Act(this);
 
     private boolean connected = false;
     private boolean transmitting = false;
@@ -43,20 +44,20 @@ class GUI extends JFrame {
     }
 
     private void createUIComponents() {
-        // TODO: place custom component creation code here
+        cells = new ArrayList<>();
         centerGrid = new JPanel();
         centerGrid.setLayout(new GridLayout(3, 5));
         for (int i = 0; i < 15; i++) {
             TicketCell t = new TicketCell();
-            cells[i] = t;
+            cells.add(t);
             centerGrid.add(t);
         }
+        (cells.get(4)).setBackground(Color.RED);
 
     }
 
     public List<TicketCell> getCells() {
-        List<TicketCell> c = Arrays.asList(cells);
-        return c;
+        return cells;
     }
 
     public JTextArea getLogArea() {
