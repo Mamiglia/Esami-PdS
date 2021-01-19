@@ -97,18 +97,4 @@ class Act implements ActionListener {
         }
     }
 
-    private int checkCells(int v) {
-        int res = 0;
-
-        for (TicketCell t : frame.getCells()) {
-
-            if (t.getValue() == v) {
-                t.setSelected(true);
-            }
-            if (t.isSelected()) {
-                res += 1;
-            }
-        }
-        return res;
-    }
 }

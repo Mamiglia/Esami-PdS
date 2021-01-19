@@ -20,8 +20,7 @@ class Sender implements Runnable {
     public void run() {
         while (numberList.size()>60 && !interrupted) {
             int randomNumber = (int) (Math.random()*numberList.size());
-            //output.println(numberList.get(randomNumber));
-            output.println(50);
+            output.println(numberList.get(randomNumber));
             output.flush();
             System.out.println("Sent: " + numberList.get(randomNumber));
             numberList.remove(randomNumber);

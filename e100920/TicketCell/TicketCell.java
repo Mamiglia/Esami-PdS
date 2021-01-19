@@ -5,13 +5,14 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class TicketCell extends JLabel {
+    // NOTA BENE: non sono riuscito a far colorare questa Jlabel,
+    // si colora  nel momento in cui la istanzio ma nel fare setSelected(boolean)
+    // non funziona il colore.
     private static ArrayList<Integer> NUMBERS;
-
-    //private JLabel label = new JLabel(String.valueOf(getRandomNumber()));
     private boolean selected = false;
 
     public TicketCell() {
-        super("50");
+        super(String.valueOf(getRandomNumber()));
         setBorder(BorderFactory.createLineBorder(Color.BLACK));
         setOpaque(true);
     }
@@ -28,7 +29,6 @@ public class TicketCell extends JLabel {
         } else {
             setBackground(Color.YELLOW);
         }
-        System.out.println(getBackground().toString());
     }
 
     public boolean isSelected() {
