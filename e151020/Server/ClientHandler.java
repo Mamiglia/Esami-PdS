@@ -32,7 +32,7 @@ class ClientHandler implements Runnable {
     }
 
     private void start(String imageX) {
-        System.out.println("Starting sending digits");
+        System.out.println("Starting sending image");
         sender = new Sender(output, imageX);
         Thread t = new Thread(sender);
         t.start();
@@ -56,8 +56,8 @@ class ClientHandler implements Runnable {
             String cmd = input.nextLine();
             if (!running) { return; }
             System.out.println("Received: " + cmd);
-            if (cmd.substring(0,cmd.length()-2).equals("start:image")) {
-                start(cmd.substring(6,cmd.length()-1));
+            if (cmd.substring(0,cmd.length()-1).equals("start:image")) {
+                start(cmd.substring(6));
             } else if (cmd.equals("stop")) {
                 interrupt();
             } else if (cmd.equals("disconnect")) {

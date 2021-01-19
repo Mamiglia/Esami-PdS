@@ -11,7 +11,7 @@ class Sender  implements Runnable {
     // si occupa solamente di inviare al client le coppie di numeri
     private final ArrayList<Integer> indexList = new ArrayList<>();
     private final PrintWriter output;
-    private File imageX;
+    private final File imageX;
     public boolean interrupted = false;
 
     public Sender(PrintWriter output, String imageX) {
@@ -19,27 +19,32 @@ class Sender  implements Runnable {
         for (int i=0;i<5;i++) {
             indexList.add(i);
         }
-        this.imageX = new File(imageX);
+
+        this.imageX = new File("e151020/Server/" + imageX);
 
     }
 
     @Override
     public void run() {
         if (!imageX.exists()) {
-            output.println("File not found");
+            System.out.println("File not found");
+            output.println("File Not Found");
             output.flush();
             return;
         }
         Scanner scan = null;
         try {
-            scan = new Scanner(new FileReader(imageX));
+            scan = new Scanner(imageX);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        System.out.println("Image Found!");
 
 
         while (scan.hasNextLine() && !interrupted) {
-            output.println(scan.nextLine());
+            String s = scan.nextLine();
+            System.out.println("Sent: " + s);
+            output.println(s);
             output.flush();
             try {
                 Thread.sleep(100);

@@ -86,6 +86,7 @@
                 <constraints/>
                 <properties>
                   <columns value="15"/>
+                  <editable value="false"/>
                   <rows value="10"/>
                 </properties>
               </component>
