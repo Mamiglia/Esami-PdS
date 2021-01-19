@@ -1,7 +1,5 @@
 package e100920.Client;
 
-import e100920.TicketCell.TicketCell;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,7 +12,7 @@ import java.util.logging.Logger;
 
 class Act implements ActionListener {
     private final GUI frame;
-    private Logger log = Logger.getLogger("ActionListener");
+    private final static Logger log = Logger.getLogger("ActionListener");
     private Socket cs;
 
     Act(GUI frame) {

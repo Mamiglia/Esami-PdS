@@ -3,7 +3,7 @@ package e100920.Client;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import e100920.TicketCell.TicketCell;
@@ -28,7 +28,6 @@ class GUI extends JFrame {
     private boolean transmitting = false;
 
     public GUI() {
-        createUIComponents();
         setContentPane(rootPanel);
 
         connectButton.addActionListener(act);
@@ -40,20 +39,20 @@ class GUI extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
 
-        centerGrid.getComponents()[0].setBackground(Color.RED);
     }
 
     private void createUIComponents() {
+        // This function runs before the constructor
+        List<Integer> randNums = generateRandomArrayOrdered();
+
         cells = new ArrayList<>();
         centerGrid = new JPanel();
         centerGrid.setLayout(new GridLayout(3, 5));
         for (int i = 0; i < 15; i++) {
-            TicketCell t = new TicketCell();
+            TicketCell t = new TicketCell(randNums.get(i));
             cells.add(t);
             centerGrid.add(t);
         }
-        (cells.get(4)).setBackground(Color.RED);
-
     }
 
     public List<TicketCell> getCells() {
@@ -102,6 +101,21 @@ class GUI extends JFrame {
             startButton.setEnabled(false);
             stopButton.setEnabled(true);
         }
+    }
+
+    private static List<Integer> generateRandomArrayOrdered() {
+        //generate random array with elements from 1 to 90 (included)
+        ArrayList<Integer> arr = new ArrayList<>();
+        arr.add((int) (Math.random()*90+1));
+        for (int i=0; i<15; i++) {
+            int rand;
+            do {
+                rand = (int) (Math.random()*90+1);
+            } while (arr.contains(rand));
+            arr.add(rand);
+        }
+        Collections.sort(arr);
+        return arr;
     }
 
 

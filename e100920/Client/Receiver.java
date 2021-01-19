@@ -3,6 +3,7 @@ package e100920.Client;
 import e100920.TicketCell.TicketCell;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.List;
 import java.util.Scanner;
 
@@ -35,6 +36,7 @@ class Receiver implements Runnable {
             } else {
                 log.append("Estratto: " + s + "\n");
                 int greenCells = checkCells(Integer.parseInt(s));
+                System.out.println(greenCells);
             }
         }
         frame.setStatus(true, false);
@@ -50,6 +52,7 @@ class Receiver implements Runnable {
                 t.setSelected(true);
             }
             if (t.isSelected()) {
+                t.setBackground(Color.GREEN);
                 res += 1;
             }
         }
