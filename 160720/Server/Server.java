@@ -76,19 +76,19 @@ public class Server implements Runnable {
                    
                    case "GET:divinaCommedia":
                        logger.log(Level.INFO,"sending divinaCommedia");
-                       sender = new Sender(out,"divinaCommedia");
+                       sender = new Sender(out,"/home/studente/NetBeansProjects/prove/server-client/esame 7 16 2020/divinaCommedia");
                        thread = new Thread(sender);
                        thread.start();
                        break;
                    case "GET:promessiSposi":
                        logger.log(Level.INFO,"sending promessiSposi");
-                       sender = new Sender(out,"promessiSposi");
+                       sender = new Sender(out,"/home/studente/NetBeansProjects/prove/server-client/esame 7 16 2020/promessiSposi");
                        thread = new Thread(sender);
                        thread.start();
                        break;
                    case "GET:canto1":
                        logger.log(Level.INFO,"sending canto1");
-                       sender = new Sender(out,"canto1");
+                       sender = new Sender(out,"/home/studente/NetBeansProjects/prove/server-client/esame 7 16 2020/canto1");
                        thread = new Thread(sender);
                        thread.start();
                        break;

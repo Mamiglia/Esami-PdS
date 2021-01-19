@@ -1,9 +1,6 @@
-
 public class Main {
 
     public static void main(String[] args) {
-        
-        Gui frame = new Gui();
+        System.out.println("yoooo")
     }
-    
 }
