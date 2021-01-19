@@ -42,7 +42,7 @@ class Act implements ActionListener {
 		try {
 			socket = new Socket(frame.getServerAddress(), frame.getPort());
 			output = new PrintWriter(socket.getOutputStream());
-			frame.write("Connessione Avvenuta");
+			frame.write("~~~~~~~~~~Connessione Avvenuta~~~~~~~~~~~");
 			frame.setStatus(true, false);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -76,6 +76,7 @@ class Act implements ActionListener {
 		try {
 			socket.close();
 			frame.setStatus(false, false);
+			frame.write("~~~~~~~~~~~~Fine Connessione~~~~~~~~~");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
