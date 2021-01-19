@@ -24,19 +24,18 @@ class Receiver implements Runnable {
 
     @Override
     public void run() {
-        log.append("Inizio Partita\n");
+        log.append("====Inizio Partita====\n");
         while (running && input.hasNextLine()) {
             String s = input.nextLine();
             System.out.println("Received: " + s);
 
             if (s.equals("+")) {
                 System.out.println("Termination string received");
-                log.append("Fine Partita\n");
+                log.append("====Fine Partita====\n");
                 running = false;
             } else {
                 log.append("Estratto: " + s + "\n");
                 int greenCells = checkCells(Integer.parseInt(s));
-                System.out.println(greenCells);
             }
         }
         frame.setStatus(true, false);
@@ -48,11 +47,9 @@ class Receiver implements Runnable {
         for (TicketCell t : cells) {
 
             if (t.getValue() == v) {
-                System.out.println(t.getValue());
                 t.setSelected(true);
             }
             if (t.isSelected()) {
-                t.setBackground(Color.GREEN);
                 res += 1;
             }
         }
