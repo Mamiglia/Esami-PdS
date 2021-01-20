@@ -1,24 +1,7 @@
 
 *.xml
 *.iml
-out/production/Esami-PdS/e100920/Client/Act.class
-out/production/Esami-PdS/e100920/Client/GUI.class
-out/production/Esami-PdS/e100920/Client/Act.class
-*.class
-*.class
-*.class
-out/production/Esami-PdS/e151020/Server/image4
-out/production/Esami-PdS/e151020/Server/image3
-out/production/Esami-PdS/e151020/Server/image2
-out/production/Esami-PdS/e151020/Server/image1
-out/production/Esami-PdS/e151020/Server/image5
-*.class
-out/production/Esami-PdS/e100920/Client/GUI.class
-out/production/Esami-PdS/e100920/Client/Act.class
-*.class
-*.class
-*.class
-out/production/Esami-PdS/e100920/Client/Act.class
 *.class
 
 out/
+.idea/
