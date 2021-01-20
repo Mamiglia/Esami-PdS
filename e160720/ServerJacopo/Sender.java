@@ -24,31 +24,29 @@ class Sender implements Runnable{
     }
     
     public void run(){
-        try{
-        
+
         try {
             reader = new FileReader(file);
         } catch (FileNotFoundException ex) {
             logger.log(Level.WARNING,"ERROR: FILE NOT FOUND");
+            finish = true;
+            out.println("File Not Found");
+            out.flush();
         }
         scan = new Scanner(reader);
-        while(scan.hasNext() && !finish){
+        while(scan.hasNextLine() && !finish) {
             string = scan.nextLine();
             out.println(string);
             out.flush();
-            if(string == "END"){
-                break;
+            if (string.equals("END")) {
+                finish = true;
             }
             try {
                 Thread.sleep(100);
             } catch (InterruptedException ex) {
-                logger.log(Level.WARNING,"ERROR: INTERRUPTED SLEEP THREAD");
+                logger.log(Level.WARNING, "ERROR: INTERRUPTED SLEEP THREAD");
             }
-        }
-        }
-        catch(Exception e){
-            logger.log(Level.WARNING,"SENDER STOP WORK");
-            System.exit(0);
+
         }
     }
     

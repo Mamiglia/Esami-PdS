@@ -3,7 +3,7 @@ it
 PORTA: 7542 		(dovrebbe funzionare anche su altre porte)
 ADRESS: 0.0.0.0
 
-i 3 file di testo devo stare nella stessa cartella dell'applicazione DEL SERVE,
+i 3 file di testo devo stare nella stessa cartella dell'applicazione DEL SERVER,
 inoltre i file che legge sono si trovano nel seguente path:
 
 /home/studente/NetBeansProjects/prove/server-client/esame 7 16 2020/

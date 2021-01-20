@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,9 +53,10 @@ class Server implements Runnable {
             }
            
             
-            folder = new File("/home/studente/NetBeansProjects/prove/server-client/esame 7 16 2020/");
+            folder = new File(Paths.get("").toAbsolutePath().toString()+"/e160720/ServerJacopo/");
             listOfFiles = folder.listFiles();
-            try{
+            logger.log(Level.INFO, Arrays.toString(listOfFiles));
+            //try{
             while(true){
                 try{
                    logger.log(Level.INFO,"waiting a command");
@@ -64,55 +67,43 @@ class Server implements Runnable {
                     e.printStackTrace();
                     break;
                 }
-                logger.log(Level.INFO,"string recived");
-                
-               switch(command){
-                   case "LIST":
-                       logger.log(Level.INFO,"sending names of files");
-                       for(int i=0; i<listOfFiles.length; i++){
-                       System.out.println("sending: " + listOfFiles[i]);
-                       out.println(listOfFiles[i]);
-                       out.flush();
-                       }
-                   logger.log(Level.INFO,"names of files sent");
-                   break;
-                   
-                   case "GET:divinaCommedia":
-                       logger.log(Level.INFO,"sending divinaCommedia");
-                       sender = new Sender(out,"/home/studente/NetBeansProjects/prove/server-client/esame 7 16 2020/divinaCommedia");
-                       thread = new Thread(sender);
-                       thread.start();
-                       break;
-                   case "GET:promessiSposi":
-                       logger.log(Level.INFO,"sending promessiSposi");
-                       sender = new Sender(out,"/home/studente/NetBeansProjects/prove/server-client/esame 7 16 2020/promessiSposi");
-                       thread = new Thread(sender);
-                       thread.start();
-                       break;
-                   case "GET:canto1":
-                       logger.log(Level.INFO,"sending canto1");
-                       sender = new Sender(out,"/home/studente/NetBeansProjects/prove/server-client/esame 7 16 2020/canto1");
-                       thread = new Thread(sender);
-                       thread.start();
-                       break;
-                   case "INTERRUPT":
-                       sender.stopThread();
-                       break;
-                   default: System.out.println("command not found");
-                            out.println("file not found");
-                            out.flush();
-                            break;
-                  
-                       
-               }
+                logger.log(Level.INFO,"RECEIVED command: " + command);
+
+                if ("LIST".equals(command)) {
+                    logger.log(Level.INFO, "sending names of files");
+                    for (File listOfFile : listOfFiles) {
+                        System.out.println("sending: " + listOfFile.getName());
+                        out.println(listOfFile.getName());
+                        out.flush();
+
+                    }
+                    out.println("END");
+                    out.flush();
+                    logger.log(Level.INFO, "names of files sent");
+                } else if ("GET:".equals(command.substring(0,4))) {
+                    String fileName = command.substring(4, command.length());
+                    logger.log(Level.INFO, "sending " + fileName);
+                    sender = new Sender(out, Paths.get("").toAbsolutePath() + "/e160720/ServerJacopo/" + fileName);
+                    thread = new Thread(sender);
+                    thread.start();
+                } else if ("INTERRUPT".equals(command)) {
+                    out.println("INTERRUPTED");
+                    out.flush();
+                    sender.stopThread();
+                } else {
+                    System.out.println("command not found");
+                    out.println("ERROR");
+                    out.flush();
+                    out.close();
+                }
                 
                 
             }
-            }
-            catch(Exception e){
-                logger.log(Level.WARNING,"ERROR: TIMEDOUT CONNECTION");
-                e.printStackTrace();
-            }
+//            }
+//            catch(){
+//                logger.log(Level.WARNING,"ERROR: TIMEDOUT CONNECTION");
+//                e.printStackTrace();
+//            }
             scan.close();
             out.close();
         }
