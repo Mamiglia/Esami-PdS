@@ -1,4 +1,4 @@
-package e160720.Server;
+package e160720.ServerJacopo;
 
 public class Main {
 
