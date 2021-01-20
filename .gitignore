@@ -1,7 +1,6 @@
 
 *.xml
 *.iml
-e100920/Client/GUI.form
 out/production/Esami-PdS/e100920/Client/Act.class
 out/production/Esami-PdS/e100920/Client/GUI.class
 out/production/Esami-PdS/e100920/Client/Act.class
@@ -21,20 +20,5 @@ out/production/Esami-PdS/e100920/Client/Act.class
 *.class
 out/production/Esami-PdS/e100920/Client/Act.class
 *.class
-out/production/Esami-PdS/e100920/Client/Act.class
-out/production/Esami-PdS/e100920/Client/GUI.class
-out/production/Esami-PdS/e100920/Server/Sender.class
-out/production/Esami-PdS/e100920/TicketCell/TicketCell.class
-out/production/Esami-PdS/e100920/Server/Sender.class
-out/production/Esami-PdS/e160720/Server/promessiSposi
-out/production/Esami-PdS/e160720/Server/divinaCommedia
-out/production/Esami-PdS/e160720/Server/leggimi
-out/production/Esami-PdS/e160720/Server/canto1
-out/production/Esami-PdS/e100920/Server by Nicole/ServerSettembre2020.jar
-out/production/Esami-PdS/LICENSE
-out/production/Esami-PdS/README.md
-out/production/Esami-PdS/e160720/ServerJacopo/canto1
-out/production/Esami-PdS/e160720/ServerJacopo/divinaCommedia
-out/production/Esami-PdS/e160720/ServerJacopo/leggimi
-out/production/Esami-PdS/e160720/ServerJacopo/promessiSposi
+
 out/
